@@ -1,0 +1,65 @@
+#userHeader{min-height:90px;width:100%;border:1px solid lightgrey;background-image:none !important,border-bottom:none;overflow:auto;border-bottom:none;padding:15px;}
+#userMenu{margin-top:0px;margin-bottom:0;/*border-right: 3px solid #005895;border-left: 3px solid #005895;*/}
+#userMenu .navbar{margin-bottom:0;border-top:none;border-bottom:none;}
+#userBody{width:100%;min-height:300px;border:1px solid lightgrey;border-top:none;padding:15px;overflow:auto;}
+#userFooter{width:100%;min-height:70px;border:1px solid lightgrey;margin-top:10px;padding:15px;overflow:auto;}
+
+.col-md-4 ul {list-style-type: none;}
+#userBody .col-md-4{border:1px solid #005895; text-align: center;}
+#userBody .col-md-8{border:1px solid #005895; text-align: center;}
+#userFooter .col-md-4{text-align:center;}
+/*#userHeader:hover{background-color: lightgrey}
+#userBody:hover{background-color: lightgrey}
+#userFooter:hover{background-color: lightgrey}
+*/
+.editable{min-width: 100px;min-height: 20px;text-align:center;}
+#carousel_header_client
+{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    /*border-color: -moz-use-text-color #005895 #005895;*/
+    border-image: none;
+    /*border-right: 3px solid #005895;
+    border-top: 3px solid #005895 !important;
+    border-style: none solid solid;
+    border-width: 0 3px 3px;*/
+    min-height: 400px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom:none;
+}
+#carousel_header_client .carousel-inner .item {
+    background-position: 50% 50%;
+    background-size: cover;
+    line-height: 450px;
+    overflow: hidden;
+}
+#carousel_header_client .carousel-inner .item .stripeOverlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    line-height: 10px;
+    padding: 20px 30px 25px;
+    vertical-align: bottom;
+    white-space: nowrap;
+    width: 100%;
+    min-height: 145px;
+    text-align: center;
+}
+#carousel_header_client .carousel-inner .item .stripeOverlay h3 {
+    color: #FFFFFF;
+    display: inline-table;
+    font-size: 29px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 29px;
+    margin: 0 0 0 20px;
+    max-width: 60%;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: normal;
+}
+.carousel-control {width: 8%;}
+#mainView{border:1px solid lightgrey;min-height: 500px;width:100%;}
