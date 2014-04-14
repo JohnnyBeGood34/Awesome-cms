@@ -4,11 +4,13 @@
     <title>Awesome cms</title>
     <link href="javascripts/libs/vendors/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="javascripts/libs/vendors/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="javascripts/libs/vendors/jqueryUi/css/jquery-ui.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/font-awesome/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
+<div class="contentLoader"><div class="imgLoader"><img src="images/ajax-loader.gif"></div></div>
+<nav class="navbar navbar-default navbarPage" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -16,20 +18,32 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#"><i class="fa fa-cog"></i> Pages</a></li>
-                <li><a href="#"><i class="fa fa-plus-square-o"></i> Add an element</a></li>
+                <li><a href="#" class="showSettings" data-action="pages"><i class="fa fa-cog"></i> Pages</a></li>
+                <li><a href="#" class="showSettings" data-action="elements"><i class="fa fa-plus-square-o"></i> Add an element</a></li>
+                <li class="border-rigth" class="showSettings" data-action="settings"><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+
+                <li><a href="#"><i class="fa fa-floppy-o"></i> Save</a></li>
+                <li><a href="#"><i class="fa fa-floppy-o"></i> Save as</a></li>
+                <li><a href="#"><i class="fa fa-eye"></i> Preview</a></li>
+                <li><a href="#"><i class="fa fa-folder-open-o"></i> Open</a></li>
+                <li><a href="#"><i class="fa fa-question"></i> Help</a></li>
+                <li><a href="#"><i class="fa fa-sign-in"></i> Register</a></li>
             </ul>
+            <div class="pull-right buttonPublish"><button class="btn btn-primary"><i class="fa fa-share"></i> Publish</button></div>
         </div>
     </div>
     <!-- /.container-fluid -->
 </nav>
+<div class="subMenu">
+
+</div>
 <div class="container">
     <div id="mainView">
 
     </div>
 </div>
 <div class="modal-footer">
-    <p style="text-align: center;">&copy; THE FUCKING CMS</p>
+    <p style="text-align: center;">&copy; THE FUCKING AWESOME CMS</p>
 </div>
 <script type="text/javascript" src="/javascripts/libs/vendors/yepnope.js"></script>
 <script type="text/javascript" src="main.js"></script>
