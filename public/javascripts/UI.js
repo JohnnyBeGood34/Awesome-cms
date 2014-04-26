@@ -139,5 +139,5 @@ function addLinkInput(event)
 
 function setInfoPict(element)
 {
-
+    var parent = element.parent();
 }
