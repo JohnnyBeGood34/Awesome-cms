@@ -9,6 +9,7 @@ yepnope({
         underscore: 'javascripts/libs/vendors/underscore.js',
         backbone: 'javascripts/libs/vendors/backbone.js',
         mustache: 'javascripts/libs/vendors/mustache.js',
+        croppic: 'javascripts/libs/vendors/croppic.min.js',
 
         //NameSpace
         cms: 'CMS.js',
@@ -73,6 +74,13 @@ yepnope({
             $("body").delegate(".linkType","change",function(){
                addLinkInput($(this).val());
             });
+            $("body").delegate(".cropPict","click",function(){
+               //Here put a crop
+            });
+            $("body").delegate(".setInfoPict","click",function(){
+               setInfoPict($(this));
+            });
+
             //Ask if the user really want to quit the page
             $(window).bind('beforeunload', function(){
                 return 'Are you sure you want to leave?';

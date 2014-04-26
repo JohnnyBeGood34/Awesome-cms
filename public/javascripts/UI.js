@@ -64,12 +64,8 @@ function showWidgetMenu()
 function addPicture()
 {
     var nbImg = $('body').find('.contentImgPage').length;
-    if(nbImg == 0)
-    {
-
-    }
     var html="";
-    $("#mainView").append("<span class='contentImgPage'><span class='elementClose'><a href='#' class='removeElement'><img src='../images/cross.png'/></a></span><span class='elementClose'><a href='#' class='linkElement' data-config='img'><i class='fa fa-link'></i></a></span><img src='../images/FAKE.png' class='imgElement'></span>");
+    $("#mainView").append("<span class='contentImgPage' id='contentImg_"+nbImg+"'><span class='elementClose'><a href='#' class='removeElement'><img src='../images/cross.png'/></a></span><span class='elementClose'><a href='#' class='linkElement' data-config='img'><i class='fa fa-link'></i></a></span><img src='../images/FAKE.png' class='imgElement'></span>");
     $(".imgElement").resizable();
     $(".contentImgPage").css("display","inline-block");
     //$(".contentImgPage").css("border","1px solid black");
@@ -78,6 +74,8 @@ function addPicture()
     $(".contentImgPage").draggable({cursor: "all-scroll"});
     html+="<ul class='navbarSubMenu'>";
     html+="<li><button class='replacePict btn btn-primary'> Replace pict</button></li>";
+    html+="<li><button class='cropPict btn btn-primary'> Crop</button></li>";
+    html+="<li><button class='setInfoPict btn btn-primary'> Set info</button></li>";
     html+="<li><i class='fa fa-step-backward fa-2x'></i><br><a href='#' class='backToElement'>Back</a></li>";
     html+="</ul>";
     $(".subMenu").html(html);
@@ -134,7 +132,12 @@ function addLinkInput(event)
             $("#contentInputLink").html("<label>Anchor</label><input type='text' name='anchorLink' class='form-control'>");
             break;
         case "File input":
-            $("#contentInputLink").html("<span style='margin-top:10px;display:inline-block'>None, please upload :</span><span class='btn btn-primary btn-file pull-right'>File to upload<input type='file' name='uploadLink' class='form-control'></span>");
+            $("#contentInputLink").html("<span style=''>None, please upload :</span><span class='btn btn-primary btn-file pull-right'>File to upload<input type='file' name='uploadLink' class='form-control'></span>");
             break;
     }
+}
+
+function setInfoPict(element)
+{
+
 }
