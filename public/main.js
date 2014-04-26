@@ -78,9 +78,11 @@ yepnope({
                //Here put a crop
             });
             $("body").delegate(".setInfoPict","click",function(){
-               setInfoPict($(this));
+                showModalConfig($(this));
             });
-
+            $("body").delegate(".contentImgPage","click",function(){
+                
+            });
             //Ask if the user really want to quit the page
             $(window).bind('beforeunload', function(){
                 return 'Are you sure you want to leave?';

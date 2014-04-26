@@ -73,9 +73,9 @@ function addPicture()
     $(".imgElement").css("border","1px dashed grey");
     $(".contentImgPage").draggable({cursor: "all-scroll"});
     html+="<ul class='navbarSubMenu'>";
-    html+="<li><button class='replacePict btn btn-primary'> Replace pict</button></li>";
-    html+="<li><button class='cropPict btn btn-primary'> Crop</button></li>";
-    html+="<li><button class='setInfoPict btn btn-primary'> Set info</button></li>";
+    html+="<li><span class='btn btn-primary btn-file pull-right' data-idImg='"+nbImg+"'>Replace picture<input type='file' name='uploadPicture' class='form-control'></span>";
+    html+="<li><span class='cropPict btn btn-primary btn-file' data-idImg='"+nbImg+"'> Crop</span></li>";
+    html+="<li><span class='setInfoPict btn btn-primary btn-file' data-config='info-img' data-idImg='"+nbImg+"'> Set info</span></li>";
     html+="<li><i class='fa fa-step-backward fa-2x'></i><br><a href='#' class='backToElement'>Back</a></li>";
     html+="</ul>";
     $(".subMenu").html(html);
@@ -90,7 +90,8 @@ function removeElement(element)
 
 function showModalConfig(element)
 {
-    var config = element.data("config");
+    var config = "";
+    config = element.data("config");
     var html="";
     switch(config){
         case "img":
@@ -106,6 +107,22 @@ function showModalConfig(element)
             html += "</select>";
             html += "<div id='contentInputLink'></div>";
             html += "</form>";
+            $(".modal-body").html(html);
+            break;
+        case "info-img":
+            var idImgContainer = element.attr("data-idImg");
+            $(".modal-title").html("Choose title and description for this element");
+            html += "<form name='formInfoImg' id='formLink' role='form'>";
+            html += "<div class='form-group'>";
+            html += "<label for='titleimg'>Title</label>";
+            html += "<input type='text' name='titleimg' id='titleimg' class='form-control'>";
+            html += "</div>";
+            html += "<div class='form-group'>";
+            html += "<input type='hidden' name='idImg' value='"+idImgContainer+"'>";
+            html += "<label for='descriptionImg'>Description</label>";
+            html += "<textarea name='descriptionImg' id='descriptionImg' class='form-control'></textarea>";
+            html += "</div>";
+            html+= "</form>";
             $(".modal-body").html(html);
             break;
     }
@@ -135,9 +152,4 @@ function addLinkInput(event)
             $("#contentInputLink").html("<span style=''>None, please upload :</span><span class='btn btn-primary btn-file pull-right'>File to upload<input type='file' name='uploadLink' class='form-control'></span>");
             break;
     }
-}
-
-function setInfoPict(element)
-{
-    var parent = element.parent();
 }
