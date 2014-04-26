@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="#" class="showSettings" data-action="pages"><i class="fa fa-cog"></i> Pages</a></li>
                 <li><a href="#" class="showSettings" data-action="elements"><i class="fa fa-plus-square-o"></i> Add an element</a></li>
-                <li class="border-rigth" class="showSettings" data-action="settings"><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                <li class="showSettings border-rigth" data-action="settings"><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
 
                 <li><a href="#"><i class="fa fa-floppy-o"></i> Save</a></li>
                 <li><a href="#"><i class="fa fa-floppy-o"></i> Save as</a></li>
@@ -34,14 +34,29 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div class="subMenu">
-
-</div>
+<div class="subMenu"></div>
 <div class="container">
-    <div id="mainView">
-
-    </div>
+    <div id="mainView"></div>
 </div>
+<!--Modal!-->
+<div class="modal fade" id="modalParameters">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                Lorem ipsum mange moi les boules
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <div class="modal-footer">
     <p style="text-align: center;">&copy; THE FUCKING AWESOME CMS</p>
 </div>

@@ -60,7 +60,23 @@ yepnope({
             $("body").delegate(".backToElement","click",function(){
                 addSettingsElement();
                 $('.subMenu').append('<a href="#" class="hideSubmenu pull-right">Hide</a>');
-            })
+            });
+            $("body").delegate(".addPicture","click",function(){
+                addPicture();
+            });
+            $("body").delegate(".removeElement","click",function(){
+               removeElement($(this));
+            });
+            $("body").delegate(".linkElement","click",function(){
+               showModalConfig($(this));
+            });
+            $("body").delegate(".linkType","change",function(){
+               addLinkInput($(this).val());
+            });
+            //Ask if the user really want to quit the page
+            $(window).bind('beforeunload', function(){
+                return 'Are you sure you want to leave?';
+            });
             //Hide loading when all loads finished
             $(".contentLoader").hide();
         });
