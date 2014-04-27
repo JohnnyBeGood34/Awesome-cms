@@ -7,9 +7,9 @@ function addSettingsPage()
 {
     var html = "";
     html+="<ul class='navbarSubMenu'>";
-    html+="<li><button class='btn btn-primary'><i class='fa fa-files-o'></i> Manage pages</button></li>";
-    html+="<li><button class='btn btn-success'><i class='fa fa-file-text'></i> Add page</button></li>";
-    html+="<li><button class='btn btn-warning'><i class='fa fa-file-o'></i> Add blank page</button></li>";
+    html+="<li><button class='btn btn-primary btn-file'><i class='fa fa-files-o'></i> Manage pages</button></li>";
+    html+="<li><button class='btn btn-success btn-file'><i class='fa fa-file-text'></i> Add page</button></li>";
+    html+="<li><button class='btn btn-warning btn-file'><i class='fa fa-file-o'></i> Add blank page</button></li>";
     html+="</ul>";
     $(".subMenu").html(html);
 }
@@ -37,12 +37,12 @@ function addSettings()
 {
     var html="";
     html+="<ul class='navbarSubMenu'>";
-    html+="<li><button class='pageColor btn btn-primary'><i class='fa fa-file-o'></i> Page color</button></li>";
-    html+="<li><button class='pageBackground btn btn-default'>Background</button></li>";
-    html+="<li><button class='pageFavicon btn btn-default'>Favicon</button></li>";
-    html+="<li><button class='pageSeo btn btn-default'>SEO</button></li>";
-    html+="<li><button class='pageDomain btn btn-default'>Domain</button></li>";
-    html+="<li><button class='pageAnalytic btn btn-default'>Website analytics</button></li>";
+    html+="<li><button class='pageColor btn btn-primary btn-file' data-config='pageSize'><i class='fa fa-file-o'></i> Page color</button></li>";
+    html+="<li><button class='pageBackground btn btn-default btn-file' data-config='setBackground'>Background</button></li>";
+    html+="<li><button class='pageFavicon btn btn-default btn-file'>Favicon</button></li>";
+    html+="<li><button class='pageSeo btn btn-default btn-file'>SEO</button></li>";
+    html+="<li><button class='pageDomain btn btn-default btn-file'>Domain</button></li>";
+    html+="<li><button class='pageAnalytic btn btn-default btn-file'>Website analytics</button></li>";
     html+="</ul>";
     $(".subMenu").html(html);
 }
@@ -105,7 +105,6 @@ function showModalConfig(element)
             html += "<option value='Link to an element'>Link to an element</option>";
             html += "<option value='File input'>File upload</option>";
             html += "</select>";
-            html += "<div id='contentInputLink'></div>";
             html += "</form>";
             $(".modal-body").html(html);
             break;
@@ -125,8 +124,48 @@ function showModalConfig(element)
             html+= "</form>";
             $(".modal-body").html(html);
             break;
+        case "pageSize":
+            $(".modal-title").html("Choose page color");
+            $(".modal-body").html("<p id='colorpickerHolder'></p>");
+            $('#colorpickerHolder').ColorPicker({
+                flat: true,
+                onChange: function (hsb, hex, rgb) {
+                $('#mainView').css('backgroundColor', '#' + hex);
+            }});
+            break;
+        case "setBackground":
+            $(".modal-title").html("Choose background type");
+            html += "<select class='form-control backgroundType' name='backgroundType'>";
+            html += "<option value='none'>Choose background type</option>";
+            html += "<option value='backgroundColor'>Background color</option>";
+            html += "<option value='backgroundCImage'>Background image</option>";
+            html += "</select>";
+            $(".modal-body").html(html);
+
+            $(".backgroundType").change(function(){
+                var event = $(this).val();
+                addBackgroundType(event);
+            });
+
+            break;
     }
     $("#modalParameters").modal();
+}
+
+function addBackgroundType(event)
+{
+    var html ="";
+    if(event == "backgroundColor")
+    {
+        html += "<p>Choose background color</p>"
+        html += "<p id='colorpickerHolder'></p>";
+        $("#contentInputLink").html(html);
+        $('#colorpickerHolder').ColorPicker({
+            flat: true,
+            onChange: function (hsb, hex, rgb) {
+                $('body').css('backgroundColor', '#' + hex);
+            }});
+    }
 }
 
 function addLinkInput(event)

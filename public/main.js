@@ -10,7 +10,7 @@ yepnope({
         backbone: 'javascripts/libs/vendors/backbone.js',
         mustache: 'javascripts/libs/vendors/mustache.js',
         croppic: 'javascripts/libs/vendors/croppic.min.js',
-
+        colorpicker : 'javascripts/libs/vendors/colorpicker/js/colorpicker.js',
         //NameSpace
         cms: 'CMS.js',
 
@@ -81,7 +81,13 @@ yepnope({
                 showModalConfig($(this));
             });
             $("body").delegate(".contentImgPage","click",function(){
-                
+
+            });
+            $("body").delegate(".pageColor","click",function(){
+                showModalConfig($(this));
+            });
+            $("body").delegate(".pageBackground","click",function(){
+                showModalConfig($(this));
             });
             //Ask if the user really want to quit the page
             $(window).bind('beforeunload', function(){
