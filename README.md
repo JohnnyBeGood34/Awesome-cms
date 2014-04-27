@@ -1,4 +1,4 @@
 Awesome-cms
 ===========
 
-Just a template maker builded using backbone.js and Node.js
+Just a template maker using backbone.js and Node.js
