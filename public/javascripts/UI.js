@@ -19,7 +19,7 @@ function addSettingsElement()
     var html="";
     html += "<ul class='navbarSubMenu'>";
     html += "<li><i class='fa fa-picture-o fa-2x'></i><br><a href='#' class='addPicture'> Picture</a></li>";
-    html += "<li><i class='fa fa-font fa-2x'></i><br><a href='#'> Text</a></li>";
+    html += "<li><i class='fa fa-font fa-2x'></i><br><a href='#' class='addText'> Text</a></li>";
     html += "<li><i class='fa fa-video-camera fa-2x'></i><br><a href='#'> Video</a></li>";
     html += "<li><i class='fa fa-th fa-2x'></i><br><a href='#'> Gallery</a></li>";
     html += "<li><i class='fa fa-play fa-2x'></i><br><a href='#'> Slideshow</a></li>";
@@ -39,10 +39,10 @@ function addSettings()
     html+="<ul class='navbarSubMenu'>";
     html+="<li><button class='pageColor btn btn-primary btn-file' data-config='pageSize'><i class='fa fa-file-o'></i> Page color</button></li>";
     html+="<li><button class='pageBackground btn btn-default btn-file' data-config='setBackground'>Background</button></li>";
-    html+="<li><button class='pageFavicon btn btn-default btn-file'>Favicon</button></li>";
-    html+="<li><button class='pageSeo btn btn-default btn-file'>SEO</button></li>";
-    html+="<li><button class='pageDomain btn btn-default btn-file'>Domain</button></li>";
-    html+="<li><button class='pageAnalytic btn btn-default btn-file'>Website analytics</button></li>";
+    html+="<li><span class='btn btn-primary btn-file pageFavicon' style='margin-left: 60px;'>Favicon<input type='file' name='uploadFav' class='form-control'></span></li>";
+    html+="<li><button class='pageSeo btn btn-default btn-file' data-config='pageSEO'>SEO</button></li>";
+    html+="<li><button class='pageDomain btn btn-default btn-file' data-config='domain'>Domain</button></li>";
+    html+="<li><button class='pageAnalytic btn btn-default btn-file' data-config='pageAnalytics'>Website analytics</button></li>";
     html+="</ul>";
     $(".subMenu").html(html);
 }
@@ -106,6 +106,7 @@ function showModalConfig(element)
             html += "<option value='File input'>File upload</option>";
             html += "</select>";
             html += "</form>";
+            html += "<div id='contentInputLink'></div>";
             $(".modal-body").html(html);
             break;
         case "info-img":
@@ -138,15 +139,37 @@ function showModalConfig(element)
             html += "<select class='form-control backgroundType' name='backgroundType'>";
             html += "<option value='none'>Choose background type</option>";
             html += "<option value='backgroundColor'>Background color</option>";
-            html += "<option value='backgroundCImage'>Background image</option>";
+            html += "<option value='backgroundImage'>Background image</option>";
             html += "</select>";
+            html += "<div id='contentInputLink'></div>";
             $(".modal-body").html(html);
-
-            $(".backgroundType").change(function(){
-                var event = $(this).val();
-                addBackgroundType(event);
-            });
-
+            break;
+        case "pageSEO":
+            $(".modal-title").html("Search Engine Optimization");
+            html += "<form name='formSEO' id='formSEO' role='form'>";
+            html += "<label>Title</label>";
+            html += "<input type='text' name='seoTitle' class='form-control'>";
+            html += "<label>Description</label>";
+            html += "<textarea class='form-control' name='seoDescription'></textarea>";
+            html += "<label>Keywords (separate by commas)</label>";
+            html += "<textarea class='form-control' name='seoKeywords'></textarea>";
+            html += "</form>";
+            $(".modal-body").html(html);
+            break;
+        case "pageAnalytics":
+            $(".modal-title").html("Analyze your website traffic");
+            html += "<form name='formAnalytics' id='formAnalytics' role='form'>";
+            html += "<label>Google Analytics tracking ID</label>";
+            html += "<input type='text' name='analyticsId' class='form-control'>";
+            html += "</form>";
+            $(".modal-body").html(html);
+            break;
+        case "domain":
+            $(".modal-title").html("Register your website");
+            html += "<form name='formDomain' id='formDomain' role='form'>";
+            html += "<label>Save as</label>";
+            html += "<input type='text' name='domainName' class='form-control'>";
+            html += "</form>";
             break;
     }
     $("#modalParameters").modal();
@@ -165,6 +188,45 @@ function addBackgroundType(event)
             onChange: function (hsb, hex, rgb) {
                 $('body').css('backgroundColor', '#' + hex);
             }});
+    }
+    else if(event == "backgroundImage")
+    {
+        html += "<form role='form' id='formBackgroundImg'>";
+        html += "<br><label>Background image :</label>";
+        html += "<span class='btn btn-primary btn-file' style='margin-left: 60px;'>Upload<input type='file' name='uploadBackImg' class='form-control'></span><br>";
+        html += "<label for='typeOfBackImg'>Type</label>";
+        html += "<select class='form-control' name='typeOfBackImg'>";
+        html += "<option value='Normal'>Normal</option>";
+        html += "<option value='Stretched'>Stretched</option>";
+        html += "</select>";
+        html += "<label for='alignBackHorizontally'>Align horizontally</label>";
+        html += "<select class='form-control' name='alignBackHorizontally'>";
+        html += "<option value='right'>Right</option>";
+        html += "<option value='left'>Left</option>";
+        html += "<option value='center'>Center</option>";
+        html += "</select>";
+        html += "<label for='alignBackVertically'>Align vertically</label>";
+        html += "<select class='form-control' name='alignBackVertically'>";
+        html += "<option value='top'>Top</option>";
+        html += "<option value='center'>Center</option>";
+        html += "<option value='bottom'>Bottom</option>";
+        html += "</select>";
+        html += "<label for='backRepeat'>Repeat</label>";
+        html += "<select class='form-control' name='backRepeat'>";
+        html += "<option value='stretch'>Stretch</option>";
+        html += "<option value='both'>Both</option>";
+        html += "<option value='horizontally'>Horizontally</option>";
+        html += "<option value='vertically'>Vertically</option>";
+        html += "<option value='none'>None</option>";
+        html += "</select>";
+        html += "<label for='backAttachment'>Attachment</label>";
+        html += "<select class='form-control' name='backAttachment'>";
+        html += "<option value='scroll'>Scroll with page</option>";
+        html += "<option value='stretched'>Stretched</option>";
+        html += "<option value='fixed'>Fixed</option>";
+        html += "</select>";
+        html += "</form>";
+        $("#contentInputLink").html(html);
     }
 }
 
@@ -191,4 +253,9 @@ function addLinkInput(event)
             $("#contentInputLink").html("<span style=''>None, please upload :</span><span class='btn btn-primary btn-file pull-right'>File to upload<input type='file' name='uploadLink' class='form-control'></span>");
             break;
     }
+}
+
+function addTextTopage()
+{
+    
 }

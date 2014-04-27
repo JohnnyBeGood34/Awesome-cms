@@ -11,6 +11,7 @@ yepnope({
         mustache: 'javascripts/libs/vendors/mustache.js',
         croppic: 'javascripts/libs/vendors/croppic.min.js',
         colorpicker : 'javascripts/libs/vendors/colorpicker/js/colorpicker.js',
+
         //NameSpace
         cms: 'CMS.js',
 
@@ -88,6 +89,22 @@ yepnope({
             });
             $("body").delegate(".pageBackground","click",function(){
                 showModalConfig($(this));
+            });
+            $("body").delegate(".backgroundType","change",function(){
+                var event = $(this).val();
+                addBackgroundType(event);
+            });
+            $("body").delegate(".pageSeo","click",function(){
+                showModalConfig($(this));
+            });
+            $("body").delegate(".pageAnalytic","click",function(){
+                showModalConfig($(this));
+            });
+            $("body").delegate(".pageDomain","click",function(){
+                showModalConfig($(this));
+            });
+            $("body").delegate(".addText","click",function(){
+                addTextTopage();
             });
             //Ask if the user really want to quit the page
             $(window).bind('beforeunload', function(){
