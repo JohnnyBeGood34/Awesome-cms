@@ -3,20 +3,18 @@
  */
 var DIVELEMENT = "<div class='elementPage'></div>";
 
-function addSettingsPage()
-{
+function addSettingsPage() {
     var html = "";
-    html+="<ul class='navbarSubMenu'>";
-    html+="<li><button class='btn btn-primary btn-file'><i class='fa fa-files-o'></i> Manage pages</button></li>";
-    html+="<li><button class='btn btn-success btn-file'><i class='fa fa-file-text'></i> Add page</button></li>";
-    html+="<li><button class='btn btn-warning btn-file'><i class='fa fa-file-o'></i> Add blank page</button></li>";
-    html+="</ul>";
+    html += "<ul class='navbarSubMenu'>";
+    html += "<li><button class='btn btn-primary btn-file'><i class='fa fa-files-o'></i> Manage pages</button></li>";
+    html += "<li><button class='btn btn-success btn-file'><i class='fa fa-file-text'></i> Add page</button></li>";
+    html += "<li><button class='btn btn-warning btn-file'><i class='fa fa-file-o'></i> Add blank page</button></li>";
+    html += "</ul>";
     $(".subMenu").html(html);
 }
 
-function addSettingsElement()
-{
-    var html="";
+function addSettingsElement() {
+    var html = "";
     html += "<ul class='navbarSubMenu'>";
     html += "<li><i class='fa fa-picture-o fa-2x'></i><br><a href='#' class='addPicture'> Picture</a></li>";
     html += "<li><i class='fa fa-font fa-2x'></i><br><a href='#' class='addText'> Text</a></li>";
@@ -29,71 +27,94 @@ function addSettingsElement()
     html += "<li><i class='fa fa-square-o fa-2x'></i><br><a href='#'> Area</a></li>";
     html += "<li><i class='fa fa-th-list fa-2x'></i><br><a href='#'> Menu</a></li>";
     html += "<li><i class='fa fa-cog fa-2x'></i><br><a href='#' class='showWidgets'> Widgets</a></li>";
-    html+="</ul>";
+    html += "</ul>";
     $(".subMenu").html(html);
 }
 
-function addSettings()
-{
-    var html="";
-    html+="<ul class='navbarSubMenu'>";
-    html+="<li><button class='pageColor btn btn-primary btn-file' data-config='pageSize'><i class='fa fa-file-o'></i> Page color</button></li>";
-    html+="<li><button class='pageBackground btn btn-default btn-file' data-config='setBackground'>Background</button></li>";
-    html+="<li><span class='btn btn-primary btn-file pageFavicon' style='margin-left: 60px;'>Favicon<input type='file' name='uploadFav' class='form-control'></span></li>";
-    html+="<li><button class='pageSeo btn btn-default btn-file' data-config='pageSEO'>SEO</button></li>";
-    html+="<li><button class='pageDomain btn btn-default btn-file' data-config='domain'>Domain</button></li>";
-    html+="<li><button class='pageAnalytic btn btn-default btn-file' data-config='pageAnalytics'>Website analytics</button></li>";
-    html+="</ul>";
+function addSettings() {
+    var html = "";
+    html += "<ul class='navbarSubMenu'>";
+    html += "<li><button class='pageColor btn btn-primary btn-file' data-config='pageSize'><i class='fa fa-file-o'></i> Page color</button></li>";
+    html += "<li><button class='pageBackground btn btn-default btn-file' data-config='setBackground'>Background</button></li>";
+    html += "<li><span class='btn btn-primary btn-file pageFavicon' style='margin-left: 60px;'>Favicon<input type='file' name='uploadFav' class='form-control'></span></li>";
+    html += "<li><button class='pageSeo btn btn-default btn-file' data-config='pageSEO'>SEO</button></li>";
+    html += "<li><button class='pageDomain btn btn-default btn-file' data-config='domain'>Domain</button></li>";
+    html += "<li><button class='pageAnalytic btn btn-default btn-file' data-config='pageAnalytics'>Website analytics</button></li>";
+    html += "</ul>";
     $(".subMenu").html(html);
 }
 
-function showWidgetMenu()
-{
-    var html="";
-    html+="<ul class='navbarSubMenu'>";
+function showWidgetMenu() {
+    var html = "";
+    html += "<ul class='navbarSubMenu'>";
     html += "<li><i class='fa fa-twitter fa-2x'></i><br><a href='#'> Twitter feed</a></li>";
     html += "<li><i class='fa fa-vimeo-square fa-2x'></i><br><a href='#'> Vimeo</a></li>";
     html += "<li><i class='fa fa-map-marker fa-2x'></i><br><a href='#'> Google Maps</a></li>";
     html += "<li><i class='fa fa-youtube-play fa-2x'></i><br><a href='#'> Youtube Video</a></li>";
     html += "<li><i class='fa fa-facebook-square fa-2x'></i><br><a href='#'> Facebook comments</a></li>";
     html += "<li><i class='fa fa-thumbs-o-up fa-2x'></i><br><a href='#'> Facebook likes</a></li>";
-    html+="<li><i class='fa fa-step-backward fa-2x'></i><br><a href='#' class='backToElement'>Back</a></li>";
-    html+="</ul>";
-    $(".subMenu").html(html);
-}
-function addPicture()
-{
-    var nbImg = $('body').find('.contentImgPage').length;
-    var html="";
-    $("#mainView").append("<span class='contentImgPage' id='contentImg_"+nbImg+"'><span class='elementClose'><a href='#' class='removeElement'><img src='../images/cross.png'/></a></span><span class='elementClose'><a href='#' class='linkElement' data-config='img'><i class='fa fa-link'></i></a></span><img src='../images/FAKE.png' class='imgElement'></span>");
-    $(".imgElement").resizable();
-    $(".contentImgPage").css("display","inline-block");
-    //$(".contentImgPage").css("border","1px solid black");
-    $(".contentImgPage").css("padding","5px");
-    $(".imgElement").css("border","1px dashed grey");
-    $(".contentImgPage").draggable({cursor: "all-scroll"});
-    html+="<ul class='navbarSubMenu'>";
-    html+="<li><span class='btn btn-primary btn-file pull-right' data-idImg='"+nbImg+"'>Replace picture<input type='file' name='uploadPicture' class='form-control'></span>";
-    html+="<li><span class='cropPict btn btn-primary btn-file' data-idImg='"+nbImg+"'> Crop</span></li>";
-    html+="<li><span class='setInfoPict btn btn-primary btn-file' data-config='info-img' data-idImg='"+nbImg+"'> Set info</span></li>";
-    html+="<li><i class='fa fa-step-backward fa-2x'></i><br><a href='#' class='backToElement'>Back</a></li>";
-    html+="</ul>";
+    html += "<li><i class='fa fa-step-backward fa-2x'></i><br><a href='#' class='backToElement'>Back</a></li>";
+    html += "</ul>";
     $(".subMenu").html(html);
 }
 
-function removeElement(element)
-{
+function addTextToPage() {
+    var nbText = $('body').find('.contentTxtPage').length;
+    var html = "";
+    var htmlText = "<h1 class='titleTextAdded'>Lorem ipsum dolor</h1>";
+    htmlText += "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sodales ipsum dui, quis ultricies elit pellentesque et. Nullam et augue ornare, tristique orci feugiat, tristique nulla. Sed nec consectetur magna. Morbi fermentum enim vitae mattis bibendum. Maecenas eu gravida nib</p>"
+    $("#mainView").append("<span class='contentTxtPage' id='contentTxt_" + nbText + "'><span class='elementClose'><a href='#' class='removeElement'><img src='../images/cross.png'/></a></span><span class='elementClose'><a href='#' class='linkElement' data-config='img'><i class='fa fa-link'></i></a></span><br><div class='txtElement'>" + htmlText + "</div></span>")
+    formatContent($(".contentTxtPage"), $(".txtElement"), "text");
+    tinymce.init({
+        selector: "div.txtElement",
+        inline: true,
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+}
+
+function formatContent(content, element, action) {
+    element.resizable();
+    content.css("display", "inline-block");
+    content.css("padding", "5px");
+    element.css("border", "1px dashed grey");
+    content.draggable({cursor: "all-scroll"});
+    if (action == "text") {
+        element.css("padding", "5px");
+        element.css("width", "345px")
+    }
+
+}
+
+function addPicture() {
+    var nbImg = $('body').find('.contentImgPage').length;
+    var html = "";
+    $("#mainView").append("<span class='contentImgPage' id='contentImg_" + nbImg + "'><span class='elementClose'><a href='#' class='removeElement'><img src='../images/cross.png'/></a></span><span class='elementClose'><a href='#' class='linkElement' data-config='img'><i class='fa fa-link'></i></a></span><img src='../images/FAKE.png' class='imgElement'></span>");
+    formatContent($(".contentImgPage"), $(".imgElement"), "img");
+    html += "<ul class='navbarSubMenu'>";
+    html += "<li><span class='btn btn-primary btn-file pull-right' data-idImg='" + nbImg + "'>Replace picture<input type='file' name='uploadPicture' class='form-control'></span>";
+    html += "<li><span class='cropPict btn btn-primary btn-file' data-idImg='" + nbImg + "'> Crop</span></li>";
+    html += "<li><span class='setInfoPict btn btn-primary btn-file' data-config='info-img' data-idImg='" + nbImg + "'> Set info</span></li>";
+    html += "<li><i class='fa fa-step-backward fa-2x'></i><br><a href='#' class='backToElement'>Back</a></li>";
+    html += "</ul>";
+    $(".subMenu").html(html);
+}
+
+function removeElement(element) {
     var parent = element.parent();
     var grandPa = parent.parent();
     grandPa.remove();
 }
 
-function showModalConfig(element)
-{
+function showModalConfig(element) {
     var config = "";
     config = element.data("config");
-    var html="";
-    switch(config){
+    var html = "";
+    switch (config) {
         case "img":
             $(".modal-title").html("Add a link");
             html += "<form name='formLinkImg' id='formLink'>";
@@ -118,11 +139,11 @@ function showModalConfig(element)
             html += "<input type='text' name='titleimg' id='titleimg' class='form-control'>";
             html += "</div>";
             html += "<div class='form-group'>";
-            html += "<input type='hidden' name='idImg' value='"+idImgContainer+"'>";
+            html += "<input type='hidden' name='idImg' value='" + idImgContainer + "'>";
             html += "<label for='descriptionImg'>Description</label>";
             html += "<textarea name='descriptionImg' id='descriptionImg' class='form-control'></textarea>";
             html += "</div>";
-            html+= "</form>";
+            html += "</form>";
             $(".modal-body").html(html);
             break;
         case "pageSize":
@@ -131,8 +152,8 @@ function showModalConfig(element)
             $('#colorpickerHolder').ColorPicker({
                 flat: true,
                 onChange: function (hsb, hex, rgb) {
-                $('#mainView').css('backgroundColor', '#' + hex);
-            }});
+                    $('#mainView').css('backgroundColor', '#' + hex);
+                }});
             break;
         case "setBackground":
             $(".modal-title").html("Choose background type");
@@ -175,11 +196,9 @@ function showModalConfig(element)
     $("#modalParameters").modal();
 }
 
-function addBackgroundType(event)
-{
-    var html ="";
-    if(event == "backgroundColor")
-    {
+function addBackgroundType(event) {
+    var html = "";
+    if (event == "backgroundColor") {
         html += "<p>Choose background color</p>"
         html += "<p id='colorpickerHolder'></p>";
         $("#contentInputLink").html(html);
@@ -189,8 +208,7 @@ function addBackgroundType(event)
                 $('body').css('backgroundColor', '#' + hex);
             }});
     }
-    else if(event == "backgroundImage")
-    {
+    else if (event == "backgroundImage") {
         html += "<form role='form' id='formBackgroundImg'>";
         html += "<br><label>Background image :</label>";
         html += "<span class='btn btn-primary btn-file' style='margin-left: 60px;'>Upload<input type='file' name='uploadBackImg' class='form-control'></span><br>";
@@ -230,11 +248,9 @@ function addBackgroundType(event)
     }
 }
 
-function addLinkInput(event)
-{
-    var html="";
-    switch(event)
-    {
+function addLinkInput(event) {
+    var html = "";
+    switch (event) {
         case "External link":
             html += "<label>External link</label><input type='text' name='externalLink' class='form-control' value='http://'>";
             html += "<label>Open in</label>";
@@ -255,7 +271,3 @@ function addLinkInput(event)
     }
 }
 
-function addTextTopage()
-{
-    
-}

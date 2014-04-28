@@ -11,7 +11,7 @@ yepnope({
         mustache: 'javascripts/libs/vendors/mustache.js',
         croppic: 'javascripts/libs/vendors/croppic.min.js',
         colorpicker : 'javascripts/libs/vendors/colorpicker/js/colorpicker.js',
-
+        tinymce : 'javascripts/libs/vendors/tinymce/tinymce.min.js',
         //NameSpace
         cms: 'CMS.js',
 
@@ -51,6 +51,7 @@ yepnope({
                 }
                 $('.subMenu').append('<a href="#" class="hideSubmenu pull-right">Hide</a>');
             });
+
             $("body").delegate(".hideSubmenu","click",function(){
                 $(".subMenu").html("");
                 $(".subMenu").hide('blind',200);
@@ -104,7 +105,7 @@ yepnope({
                 showModalConfig($(this));
             });
             $("body").delegate(".addText","click",function(){
-                addTextTopage();
+                addTextToPage();
             });
             //Ask if the user really want to quit the page
             $(window).bind('beforeunload', function(){
