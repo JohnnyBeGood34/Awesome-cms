@@ -51,7 +51,6 @@ yepnope({
                 }
                 $('.subMenu').append('<a href="#" class="hideSubmenu pull-right">Hide</a>');
             });
-
             $("body").delegate(".hideSubmenu","click",function(){
                 $(".subMenu").html("");
                 $(".subMenu").hide('blind',200);

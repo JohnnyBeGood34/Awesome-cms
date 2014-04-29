@@ -64,7 +64,6 @@ function addTextToPage() {
     var htmlText = "<h1 class='titleTextAdded'>Lorem ipsum dolor</h1>";
     htmlText += "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sodales ipsum dui, quis ultricies elit pellentesque et. Nullam et augue ornare, tristique orci feugiat, tristique nulla. Sed nec consectetur magna. Morbi fermentum enim vitae mattis bibendum. Maecenas eu gravida nib</p>"
     $("#mainView").append("<span class='contentTxtPage' id='contentTxt_" + nbText + "'><span class='elementClose'><a href='#' class='removeElement'><img src='../images/cross.png'/></a></span><span class='elementClose'><a href='#' class='linkElement' data-config='img'><i class='fa fa-link'></i></a></span><br><div class='txtElement'>" + htmlText + "</div></span>")
-    formatContent($(".contentTxtPage"), $(".txtElement"), "text");
     tinymce.init({
         selector: "div.txtElement",
         inline: true,
@@ -75,14 +74,26 @@ function addTextToPage() {
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
+    $(".contentTxtPage").draggable().click(function () {
+        $(this).draggable({ disabled: true});
+        $(this).children().attr("contenteditable", "true");
+        $(".txtElement").css("border", "none");
+    }).dblclick(function () {
+            $(this).draggable({ disabled: false, cursor: "all-scroll"});
+            $(this).children().attr("contenteditable", "false");
+            $(".txtElement").css("border", "1px dashed grey");
+        });
+    formatContent($(".contentTxtPage"), $(".txtElement"), "text");
 }
 
 function formatContent(content, element, action) {
-    element.resizable();
     content.css("display", "inline-block");
     content.css("padding", "5px");
     element.css("border", "1px dashed grey");
-    content.draggable({cursor: "all-scroll"});
+    if (action == "img") {
+        content.draggable({cursor: "all-scroll"});
+        element.resizable();
+    }
     if (action == "text") {
         element.css("padding", "5px");
         element.css("width", "345px")
@@ -101,6 +112,7 @@ function addPicture() {
     html += "<li><span class='setInfoPict btn btn-primary btn-file' data-config='info-img' data-idImg='" + nbImg + "'> Set info</span></li>";
     html += "<li><i class='fa fa-step-backward fa-2x'></i><br><a href='#' class='backToElement'>Back</a></li>";
     html += "</ul>";
+    
     $(".subMenu").html(html);
 }
 
